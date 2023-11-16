@@ -48,11 +48,12 @@ def create_pg_table():
 
     # Preparing query to create a database
     sql = '''CREATE database TOUCHSTONE_COMPETITIONS'''
-
+    # dropping table if it exists already
+    drop = '''DROP TABLE res'''
+    cursor.execute(drop)
     # Creating a database
-
     # creating table
-    sql = '''CREATE TABLE climbing_results(
+    sql = '''CREATE TABLE res(
      id  SERIAL NOT NULL primary key,
      event varchar(150) not null,
      date DATE not null,
@@ -71,7 +72,7 @@ def create_pg_table():
 
     for d in dict_values:
         cursor.execute(
-            "INSERT into climbing_results(event,date,name,score,bumped,gender,category,age_group) VALUES (%s, %s,%s, %s,%s, %s,%s, %s)",
+            "INSERT into res(event,date,name,score,bumped,gender,category,age_group) VALUES (%s, %s,%s, %s,%s, %s,%s, %s)",
             d)
 
     print("Database created successfully........")
