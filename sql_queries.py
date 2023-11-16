@@ -15,7 +15,7 @@ sql = '''CREATE database TOUCHSTONE_COMPETITIONS''';
 
 # creating table
 sql = '''CREATE TABLE climbing_results(
- id  SERIAL NOT NULL,
+ id  SERIAL NOT NULL primary key,
  name varchar(50) not null,
  score varchar(50) not null,
   bumped varchar(50) not null,
